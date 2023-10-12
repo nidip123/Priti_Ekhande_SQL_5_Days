@@ -1,0 +1,59 @@
+* ---------creating Table-----*
+
+create table Gym_memb(
+  id number(4) primary key,
+  name varchar2(20) not null,
+  age number(3) not null check(age>0),
+  joining_date DATE not null,
+  Expiration_date DATE not null,
+  cost number(30) not null,
+  city varchar2(40) default 'Mumbai' not null,
+  height number(20) not null,
+  Weight number(30) not null,
+  created_at Date default sysdate);
+
+* -------creating Sequence-------*
+
+create sequence Gym_sequence
+start with 1
+increment by 1
+
+* ----Inserting table------*
+
+ insert into Gym_memb( id,name,age,joining_date,Expiration_date,cost,city,height,weight)
+  2  VALUES (Gym_sequence.nextval,'Priti','21','13-oct-2021','14-oct-2023','5000','Delhi','152','70');
+
+  insert into Gym_memb( id,name,age,joining_date,Expiration_date,cost,city,height,weight)
+  2  VALUES (Gym_sequence.nextval,'Rina','22','17-aug-2022','17-sep-2023','9000','pune','150','55');
+
+
+SQL> insert into Gym_memb( id,name,age,joining_date,Expiration_date,cost,city,height,weight)
+  2  VALUES (Gym_sequence.nextval,'Ram','23','10-aug-2022','06-jan-2024','8000','Mumbai','155','60');
+
+1 row created.
+
+SQL> insert into Gym_memb( id,name,age,joining_date,Expiration_date,cost,city,height,weight)
+  2  VALUES (Gym_sequence.nextval,'sankita','21','10-sep-2021','15-jan-2023','4000','Nagpur','148','50');
+
+1 row created.
+
+SQL> insert into Gym_memb( id,name,age,joining_date,Expiration_date,cost,city,height,weight)
+  2  VALUES (Gym_sequence.nextval,'viraj','25','12-sep-2021','20-may-2023','7000','surat','153','48');
+
+1 row created.
+
+SQL> insert into Gym_memb( id,name,age,joining_date,Expiration_date,cost,city,height,weight)
+  2  VALUES (Gym_sequence.nextval,'Rani','27','10-oct-2023','11-feb-2024','3000','kolkata','157','56');
+
+
+ select * from Gym_memb;
+
+ select * from Gym_memb where cost>4000;
+
+ select * from Gym_memb where city ='pune';
+
+ select * from Gym_memb where city ='pune' and age>23;
+
+ select * from Gym_memb where MONTHS_BETWEEN(SYSDATE,joining_date) <=3;
+
+select * from Gym_memb where MONTHS_BETWEEN(joining_date,Expiration_date) =3;
